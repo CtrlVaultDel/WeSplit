@@ -26,10 +26,16 @@ struct ContentView: View {
         NavigationView{
             Form{
                 Section{
-                    TextField("Check Amount", value: $checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
-                        .keyboardType(.decimalPad)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .focused($amountIsFocused)
+                    VStack{
+                        Text("Check")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .font(.system(size: 10.0))
+                            .padding(0)
+                        TextField("Check Amount", value: $checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                            .keyboardType(.decimalPad)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .focused($amountIsFocused)
+                    }
                     
                     Picker("Number of people", selection: $numberOfPeople){
                         ForEach(2 ..< 100){
